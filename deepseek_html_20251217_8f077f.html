@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Scam Message Analyzer – Check SMS, WhatsApp & Email Scams</title>
+    <meta name="description" content="Free Scam Message Analyzer to check SMS, WhatsApp, Email & Job scams in India and USA. Analyze suspicious messages instantly and stay safe online.">
+    <meta name="keywords" content="scam message checker, sms scam check, whatsapp scam analyzer, email scam checker, job scam check, india scam message, usa scam message, usps scam sms, irs scam message, upi fraud sms, fake job offer check, online fraud awareness">
+    <meta name="author" content="Scam Message Analyzer">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Scam Message Analyzer – Check SMS, WhatsApp & Email Scams">
+    <meta property="og:description" content="Free Scam Message Analyzer to check SMS, WhatsApp, Email & Job scams in India and USA. Analyze suspicious messages instantly and stay safe online.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourusername.github.io/scam-message-analyzer">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔍</text></svg>">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Schema Markup (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Scam Message Analyzer",
+        "applicationCategory": "SecurityApplication",
+        "operatingSystem": "Any",
+        "description": "Free tool to analyze SMS, WhatsApp, Email and Job messages for scam detection",
+        "url": "https://yourusername.github.io/scam-message-analyzer",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <h1>🔍 Scam Message Analyzer</h1>
+                <p class="tagline">Check messages for scams before they scam you</p>
+            </div>
+            <div class="theme-toggle">
+                <button id="themeToggle" aria-label="Toggle dark/light mode">🌓</button>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <h2>Check If a Message Is a Scam Before It Scams You</h2>
+            <p>This free tool helps you analyze suspicious SMS, WhatsApp, Email, and Job offer messages for potential scams. Whether you're in India or the USA, paste any message below to check its safety instantly.</p>
+        </section>
+
+        <!-- Main Tool Section -->
+        <section class="tool-section">
+            <div class="tool-card">
+                <div class="input-group">
+                    <label for="messageInput">Paste your suspicious message here:</label>
+                    <textarea 
+                        id="messageInput" 
+                        placeholder="Example: 'Congratulations! You've won a $1000 Amazon gift card. Click here to claim: http://fake-gift.com/claim' 
+Or: 'Your bank account will be blocked in 24 hours. Update your KYC now: http://fake-bank-update.com' 
+Or: 'Hi, we have a work-from-home job offer paying $500/day. Contact us on Telegram: @fakejob'"
+                        rows="8"
+                    ></textarea>
+                    <div class="char-count">
+                        <span id="charCount">0</span> characters
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <div class="country-selector">
+                        <label for="countrySelect">Select your country for scam detection:</label>
+                        <select id="countrySelect">
+                            <option value="india">🇮🇳 India</option>
+                            <option value="usa">🇺🇸 United States</option>
+                        </select>
+                    </div>
+                    
+                    <button id="analyzeBtn" class="analyze-btn">
+                        🔍 Analyze Message
+                    </button>
+                    
+                    <button id="clearBtn" class="clear-btn">
+                        🗑️ Clear
+                    </button>
+                </div>
+
+                <!-- Results Section -->
+                <div id="resultsSection" class="results-section hidden">
+                    <h3>Analysis Results</h3>
+                    
+                    <div class="score-display">
+                        <div class="score-circle">
+                            <svg width="120" height="120" viewBox="0 0 120 120">
+                                <circle class="score-circle-bg" cx="60" cy="60" r="54" stroke-width="12"></circle>
+                                <circle id="scoreCircle" class="score-circle-progress" cx="60" cy="60" r="54" stroke-width="12" 
+                                        stroke-dasharray="339.292" stroke-dashoffset="339.292"></circle>
+                                <text id="scoreText" x="60" y="65" text-anchor="middle" font-size="28" font-weight="bold">0</text>
+                                <text x="60" y="85" text-anchor="middle" font-size="14">SCORE</text>
+                            </svg>
+                        </div>
+                        
+                        <div class="result-badge-container">
+                            <div id="resultBadge" class="result-badge">
+                                <span class="badge-icon">⏳</span>
+                                <span class="badge-text">Analyzing...</span>
+                            </div>
+                            <p class="risk-label" id="riskLabel">Risk Level: Not Analyzed</p>
+                        </div>
+                    </div>
+
+                    <div class="scam-reasons">
+                        <h4>⚠️ Detected Scam Indicators:</h4>
+                        <ul id="scamReasonsList">
+                            <!-- Filled by JavaScript -->
+                        </ul>
+                    </div>
+
+                    <div class="keywords-found">
+                        <h4>🔎 Highlighted Scam Keywords:</h4>
+                        <div id="highlightedKeywords" class="keywords-container">
+                            <!-- Filled by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Disclaimer -->
+                <div class="disclaimer">
+                    <p><strong>⚠️ Disclaimer:</strong> This tool provides awareness-based analysis only using pattern detection. Always verify from official sources before taking any action. We do not store any messages you analyze.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="info-section">
+            <h2>🔧 How This Tool Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Paste Your Message</h3>
+                    <p>Copy and paste any suspicious SMS, WhatsApp, Email, or job offer message into the text box above.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Select Country</h3>
+                    <p>Choose India or USA for country-specific scam detection patterns (UPI/OTP scams for India, IRS/USPS for USA).</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Analyze Instantly</h3>
+                    <p>Click "Analyze Message" to get a scam risk score, reasons, and highlighted suspicious keywords.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Stay Safe</h3>
+                    <p>Use the analysis to make informed decisions. Never share personal or financial details with unverified sources.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Common Scams Section -->
+        <section class="info-section">
+            <h2>🚨 Common Scams in India & USA</h2>
+            <div class="scam-types">
+                <div class="scam-type">
+                    <h3>🇮🇳 India-Specific Scams</h3>
+                    <ul>
+                        <li><strong>UPI/Payment Scams:</strong> Fake UPI payment requests or QR codes</li>
+                        <li><strong>OTP/KYC Fraud:</strong> Messages asking for OTP or KYC update</li>
+                        <li><strong>Bank Account Block:</strong> Threats to block your bank/SIM card</li>
+                        <li><strong>WhatsApp Job Scams:</strong> Fake work-from-home offers via WhatsApp</li>
+                        <li><strong>Fake Refund Offers:</strong> Promises of refunds from Amazon/Flipkart</li>
+                    </ul>
+                </div>
+                <div class="scam-type">
+                    <h3>🇺🇸 USA-Specific Scams</h3>
+                    <ul>
+                        <li><strong>IRS/Tax Scams:</strong> Threats about tax issues or refunds</li>
+                        <li><strong>USPS/Shipping Scams:</strong> Fake package delivery messages</li>
+                        <li><strong>Social Security Fraud:</strong> Alerts about Social Security suspension</li>
+                        <li><strong>Crypto/Gift Card Scams:</strong> Requests for payment in gift cards/crypto</li>
+                        <li><strong>Tech Support Scams:</strong> Fake Microsoft/Apple security alerts</li>
+                    </ul>
+                </div>
+                <div class="scam-type">
+                    <h3>🌍 Global Scam Patterns</h3>
+                    <ul>
+                        <li><strong>Urgency & Threats:</strong> "Act now or your account will be closed"</li>
+                        <li><strong>Too-Good-To-Be-True:</strong> Unrealistic salaries ($500/day jobs)</li>
+                        <li><strong>Fake Rewards:</strong> You've won a prize you didn't enter for</li>
+                        <li><strong>Suspicious Links:</strong> Shortened URLs or misspelled domains</li>
+                        <li><strong>Personal Info Requests:</strong> Asking for passwords, PINs, or details</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="info-section">
+            <h2>❓ Frequently Asked Questions</h2>
+            <div class="faq">
+                <div class="faq-item">
+                    <button class="faq-question">How accurate is this scam analyzer?</button>
+                    <div class="faq-answer">
+                        <p>This tool uses pattern matching for known scam indicators but cannot guarantee 100% accuracy. It's designed to raise awareness and help you identify potential red flags. Always verify with official sources.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Are WhatsApp job messages usually fake?</button>
+                    <div class="faq-answer">
+                        <p>Most unsolicited job offers on WhatsApp are scams, especially if they promise unusually high pay for minimal work, ask for upfront payments, or direct you to Telegram/other platforms. Legitimate companies rarely recruit via random WhatsApp messages.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">How can I avoid SMS fraud?</button>
+                    <div class="faq-answer">
+                        <p>1. Never click links from unknown senders<br>2. Never share OTPs, passwords, or PINs<br>3. Verify directly with the organization using official contact details<br>4. Be suspicious of urgent threats or too-good-to-be-true offers<br>5. Use this tool to check suspicious messages</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">What should I do if I've been scammed?</button>
+                    <div class="faq-answer">
+                        <p>1. Immediately contact your bank to secure accounts<br>2. Change passwords for affected services<br>3. Report to local cyber crime authorities<br>4. In India: contact cybercrime.gov.in<br>5. In USA: report to FTC at reportfraud.ftc.gov</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Does this tool store my messages?</button>
+                    <div class="faq-answer">
+                        <p>No. All analysis happens locally in your browser. We don't collect, store, or transmit any messages you analyze. Your privacy is protected.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="info-section contact-section">
+            <h2>📞 Contact & Feedback</h2>
+            <p>For feedback, suggestions, or reporting new scam patterns, please contact:</p>
+            <div class="contact-details">
+                <p><strong>Name:</strong> DEEPAK RAI</p>
+                <p><strong>Mobile Number:</strong> 6202608187</p>
+                <p><strong>Email:</strong> deepakrai845106@gmail.com</p>
+            </div>
+            <p class="contact-note">Please use these contact details only for feedback, suggestions, or reporting new scam patterns.</p>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Scam Message Analyzer &copy; <span id="currentYear"></span> | A free tool for online safety awareness</p>
+            <p class="footer-note">This tool is for educational purposes only. We are not responsible for any losses resulting from scam messages.</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
